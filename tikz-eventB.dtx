@@ -1,0 +1,366 @@
+% \iffalse meta-comment
+% 
+% tikz-eventB.ins
+% 
+% Copyright (C) 2016 by Thai Son Hoang <T.S.Hoang at ecs dot soton dot ac dot uk>
+% --------------------------------------------------------------------
+% 
+% This file may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in:
+% 
+%      http://www.latex-project.org/lppl.txt
+% 
+% and version 1.3 or later is part of all distributions of LaTeX 
+% version 2003/12/01 or later.
+% 
+% This work has the LPPL maintenance status "author-maintained".
+% 
+% This work consists of the files eventB.dtx, eventB.ins,
+% the derived file eventB.sty, the generated documentation
+% eventB.pdf, and some sample documents.
+% 
+% \fi
+% 
+% \iffalse
+%<tikz-eventB>%%%%% BEGIN Identification part %%%%%
+%<tikz-eventB>% ========================
+%<tikz-eventB>\NeedsTeXFormat{LaTeX2e}\relax
+%<tikz-eventB>\ProvidesPackage{tikz-eventB}
+%<tikz-eventB>    [2014/06/12 v0.0.1 Package for typesetting diagrams of Event-B models] 
+%<tikz-eventB>%%%%% END Identification part %%%%%
+% 
+%<*driver> 
+\documentclass[a4paper]{ltxdoc}
+\usepackage[colour]{eventB}
+\usepackage{tikz-eventB}
+\EnableCrossrefs
+% ^^A Enable either \CodelineIndex or \PageIndex
+\CodelineIndex
+% ^^A\PageIndex
+\RecordChanges
+
+\begin{document}
+\DocInput{tikz-eventB.dtx}
+\end{document}
+%</driver> 
+% \fi
+% 
+% \CheckSum{0}
+% 
+% \CharacterTable
+% {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+% Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+% Digits        \0\1\2\3\4\5\6\7\8\9
+% Exclamation   \!     Double quote  \"     Hash (number) \#
+% Dollar        \$     Percent       \%     Ampersand     \&
+% Acute accent  \'     Left paren    \(     Right paren   \)
+% Asterisk      \*     Plus          \+     Comma         \,
+% Minus         \-     Point         \.     Solidus       \/
+% Colon         \:     Semicolon     \;     Less than     \<
+% Equals        \=     Greater than  \>     Question mark \?
+% Commercial at \@     Left bracket  \[     Backslash     \\
+% Right bracket \]     Circumflex    \^     Underscore    \_
+% Grave accent  \`     Left brace    \{     Vertical bar  \|
+% Right brace   \}     Tilde         \~}
+% 
+% 
+% \changes{v0.0.1}{2016/06/12}{Initial version}
+% 
+% \DoNotIndex{\DeclareOption, \ExecuteOptions, \ProcessOptions, \RequirePackage}
+% \DoNotIndex{\\,\ }
+% \DoNotIndex{\hspace,\quad,\setlength,\newlength}
+% \DoNotIndex{\newcommand, \renewcommand, \newenvironment}
+% \DoNotIndex{\normalsize, \small, \footnotesize, \scriptsize}
+% \DoNotIndex{\textsc}
+% \DoNotIndex{\ensuremath, \mathbf, \mathit, \mathsf}
+% \DoNotIndex{\begin, \end, \fbox, \fboxsep, \hbox}
+% \DoNotIndex{\textcolor, \colorlet}
+% \DoNotIndex{\xspace}
+% \DoNotIndex{\def, \csname, \endcsname, \expandafter, \ifstrequal}
+% \DoNotIndex{\land, \widehat}
+% \DoNotIndex{\B@tmp@length}
+%
+% \GetFileInfo{tikz-eventB.sty}
+%
+% \title{The \textsf{tikz-eventB} package\thanks{This document corresponds to \textsf{tikz-eventB}~\fileversion, dated~\filedate.}}
+% \author{Thai Son Hoang \\ University of Southampton, U.K. \\ \texttt{<T.S.Hoang at ecs dot soton dot ac dot uk>}}
+% \date{\today}
+% 
+% \maketitle
+% 
+% ^^A %%%%% Abstract %%%%%
+% \begin{abstract}
+%   This class provides facilities for typesetting diagrams for Event-B models.  It was
+%   developed at the University of Southampton, U.K.
+% \end{abstract}
+% 
+% ^^A %%%%% Table of contents %%%%%
+% \tableofcontents
+% 
+% ^^A %%%%% Introduction %%%%%
+% \section{Introduction}
+% 
+% This package was developed in order to ease the typesetting of
+% diagrams for Event-B models in \LaTeX{} using TikZ.
+% 
+% ^^A %%%%% Usage %%%%%%
+% \section{Usage}
+% See |sample-tikz-eventB.tex| for an example of how to use the package.
+%
+% \StopEventually{
+% \PrintIndex
+% \PrintChanges
+% }
+%
+% ^^A %%%%% Implementation %%%%%
+% \section{Implementation}
+%
+% \subsection{Package Loading}
+% \label{sec:package-loading}
+% We begin by loading the required package |tikz| and |eventB|.
+% \iffalse ^^A BEGIN Produce comments only in the resulting class file
+%<tikz-eventB>
+%<tikz-eventB>%%%%% BEGIN Package loading %%%%%
+%<tikz-eventB>% ========================
+% \fi^^A END Produce comments only in the resulting class file
+%    \begin{macrocode}
+\RequirePackage{tikz}
+\RequirePackage{eventB}
+%    \end{macrocode}
+% \iffalse ^^A BEGIN Produce comments only in the resulting class file
+%<tikz-eventB>%%%%% END Package loading %%%%%
+% \fi^^A END Produce comments only in the resulting class file
+%
+% \subsection{Commands for Creating Diagrams of Event-B Models}
+% \label{sec:comm-pretty-print}
+
+% \iffalse ^^A BEGIN Produce comments only in the resulting class file
+%<tikz-eventB>
+%<tikz-eventB>%%%%% BEGIN Commands for Creating Diagrams Event-B Models %%%%%
+%<tikz-eventB>% ========================
+% \fi^^A END Produce comments only in the resulting class file
+%
+% \begin{macro}{Bdiagram}
+%   \changes{v0.0.1}{2016/06/12}{Added}
+%   The |Bdiagram| environment for creating diagrams for \eventB models which is the 
+%   same as the |tikzpicture| environment.  The environment has an optional argument 
+%   which will be passed to the |tikzpicture| environment.
+%   \iffalse ^^A BEGIN Produce comments only in the resulting class file
+%<tikz-eventB> 
+%<tikz-eventB>% Bdiagram environment the same as the tikzpicture
+%<tikz-eventB>% environment.
+%<tikz-eventB>% Arguments:
+%<tikz-eventB>% 1. (Optional) These option will be passed to the
+%<tikz-eventB>% tikzpicture environment
+% \fi^^A END Produce comments only in the resulting class file
+%    \begin{macrocode}
+\newenvironment{Bdiagram}[1][]
+{\begin{tikzpicture}[#1]}
+{\end{tikzpicture}}
+%    \end{macrocode}
+% \end{macro}^^A END \Bdiagram
+
+% \paragraph{Drawing Event-B Components}
+% \begin{macro}{\tikzMch}
+%   The \eventB components, i.e., machines and contexts are drawed using |\tikzMch| 
+%   and |\tikzCtx| commands.
+%   \changes{v0.0.1}{2016/06/12}{Added}
+%   \iffalse ^^A BEGIN Produce comments only in the resulting class file
+%<tikz-eventB> 
+%<tikz-eventB>% Macro for drawing a node for a machine.
+%<tikz-eventB>%
+%<tikz-eventB>% Arguments:
+%<tikz-eventB>% 1. (Optional) The label of the node.
+%<tikz-eventB>% 2. The x-coordinate.
+%<tikz-eventB>% 3. The y-coordinate.
+%<tikz-eventB>% 4. The name of the machine.
+%<tikz-eventB>%
+%<tikz-eventB>% USAGE:
+%<tikz-eventB>% \tikzMch[mch]{0}{1}{M} will produce a node label ``mch'' at position 
+%<tikz-eventB>% (0,1). The content of the node, i.e., M will be put inside a \Bmch{}
+%<tikz-eventB>% automatically.
+% \fi^^A END Produce comments only in the resulting class file
+%    \begin{macrocode}
+\newcommand{\tikzMch}[4][]{
+  \draw(#2,#3)
+  node[draw, inner sep = 2ex, minimum width = 4em](#1){\Bmch{#4}};
+}
+%    \end{macrocode}
+% \end{macro}^^A END \tikzMch
+% \begin{macro}{\tikzCtx}
+%   \changes{v0.0.1}{2016/06/12}{Added}
+%   \iffalse ^^A BEGIN Produce comments only in the resulting class file
+%<tikz-eventB>
+%<tikz-eventB>% Macro for drawing a node for a context.
+%<tikz-eventB>%
+%<tikz-eventB>% Arguments:
+%<tikz-eventB>% 1. (Optional) The label of the node.
+%<tikz-eventB>% 2. The x-coordinate.
+%<tikz-eventB>% 3. The y-coordinate.
+%<tikz-eventB>% 4. The name of the context.
+%<tikz-eventB>%
+%<tikz-eventB>% USAGE:
+%<tikz-eventB>% \tikzMch[ctx]{0}{1}{C} will produce a node label ``ctx'' at position 
+%<tikz-eventB>% (0,1). The content of the node, i.e., C will be put inside a \Bctx{}
+%<tikz-eventB>% automatically.
+% \fi^^A END Produce comments only in the resulting class file
+%    \begin{macrocode}
+\newcommand{\tikzCtx}[4][]{
+  \draw(#2,#3)
+  node[draw, rounded corners, inner sep = 2ex, minimum width = 4em](#1){\Bctx{#4}};
+}
+%    \end{macrocode}
+% \end{macro}^^A END \tikzCtx
+%
+% \iffalse ^^A BEGIN Produce comments only in the resulting class file
+%<tikz-eventB>
+%<tikz-eventB>%%%%% END Commands for Creating Diagrams Event-B Models %%%%%
+%<tikz-eventB>% ========================
+% \fi^^A END Produce comments only in the resulting class file
+%
+% \paragraph{Drawing Relationships between Event-B Components}
+% The relationship between \eventB components are drawn using the coordinates of the
+% components.  Note that the coordinate of the system can be specified relatively to the
+% optional label given to components as in commands |\tikzMch| or |\tikzCtx|.
+%
+% \begin{macro}{\tikzSees}
+%   \changes{v0.0.1}{2016/06/12}{Added}
+%   The |\tikzSees| command draws the \Bsees relationship between a machine and a 
+%   context.
+%   \iffalse ^^A BEGIN Produce comments only in the resulting class file
+%<tikz-eventB>
+%<tikz-eventB>% Macro for drawing a SEES relationship between a machine and a context.
+%<tikz-eventB>%
+%<tikz-eventB>% Arguments:
+%<tikz-eventB>% 1. (Optional) The style for drawing, passed as it is
+%<tikz-eventB>%     to the underlying \draw command
+%<tikz-eventB>% 2. The coordinate of a machine.
+%<tikz-eventB>% 3. The coordinate of a context.
+%<tikz-eventB>%
+%<tikz-eventB>% USAGE:
+%<tikz-eventB>% \tikzSees{mch}{ctx} will produce an arrow with the label ``\Bsees'' 
+%<tikz-eventB>% from the node labelled ``mch'' to the node labelled ``ctx''.
+%<tikz-eventB>% The labels must be created as (optional arguments) before using
+%<tikz-eventB>% the \tikzMch and \tikzCtx commands.
+% \fi^^A END Produce comments only in the resulting class file
+%    \begin{macrocode}
+\newcommand{\tikzSees}[3][]{
+  \draw[->, #1] (#2) --node[fill=white]{\Bsees} (#3);
+}
+%    \end{macrocode}
+% \end{macro}^^A END \tikzSees
+%
+% \begin{macro}{\tikzRefines}
+%   \changes{v0.0.1}{2016/06/12}{Added}
+%   The |\tikzRefines| command draws the \Brefines relationship between a (concrete) 
+%   machine and an (abstract) machine
+%   \iffalse ^^A BEGIN Produce comments only in the resulting class file
+%<tikz-eventB>
+%<tikz-eventB>% Macro for drawing a REFINES relationship between a (concrete) machine and an (abstract) machine.
+%<tikz-eventB>%
+%<tikz-eventB>% Arguments:
+%<tikz-eventB>% 1. (Optional) The style for drawing, passed as it is
+%<tikz-eventB>%     to the underlying \draw command
+%<tikz-eventB>% 2. The coordinate of the concrete machine.
+%<tikz-eventB>% 3. The coordinate of the abstract machine.
+%<tikz-eventB>%
+%<tikz-eventB>% USAGE:
+%<tikz-eventB>% \tikzRefines{cnc}{abs} will produce an arrow with the label ``\Brefines'' 
+%<tikz-eventB>% from the node labelled ``cnc'' to the node labelled ``abs''.
+%<tikz-eventB>% The labels must be created as (optional arguments) before using
+%<tikz-eventB>% rhe \tikzMch command.
+% \fi^^A END Produce comments only in the resulting class file
+%    \begin{macrocode}
+\newcommand{\tikzRefines}[3][]{
+  \draw[->, #1] (#2) --node[fill=white]{\Brefines} (#3);
+}
+%    \end{macrocode}
+% \end{macro}^^A END \tikzRefines
+%
+% \begin{macro}{\tikzRefinesTransitive}
+%   \changes{v0.0.1}{2016/06/12}{Added}
+%   The |\tikzRefinesTransitive| command draws the transtive \Brefines relationship between a (concrete) 
+%   machine and an (abstract) machine
+%   \iffalse ^^A BEGIN Produce comments only in the resulting class file
+%<tikz-eventB>
+%<tikz-eventB>% Macro for drawing a transtive REFINES relationship between a (concrete) machine and an (abstract) machine.
+%<tikz-eventB>%
+%<tikz-eventB>% Arguments:
+%<tikz-eventB>% 1. (Optional) The style for drawing, passed as it is
+%<tikz-eventB>%     to the underlying \draw command
+%<tikz-eventB>% 2. The coordinate of the concrete machine.
+%<tikz-eventB>% 3. The coordinate of the abstract machine.
+%<tikz-eventB>%
+%<tikz-eventB>% USAGE:
+%<tikz-eventB>% \tikzRefinesTranstive{cnc}{abs} will produce an dashed arrow with the label ``\Bextends'' 
+%<tikz-eventB>% from the node labelled ``cnc'' to the node labelled ``abs''.
+%<tikz-eventB>% The labels must be created as (optional arguments) before using
+%<tikz-eventB>% the \tikzMch command.
+% \fi^^A END Produce comments only in the resulting class file
+%    \begin{macrocode}
+\newcommand{\tikzRefinesTransitive}[3][]{
+  \draw[->, dashed,#1] (#2) --node[fill=white]{\Brefines} (#3);
+}
+%    \end{macrocode}
+% \end{macro}^^A END \tikzRefinesTranstive
+%
+% \begin{macro}{\tikzExtends}
+%   \changes{v0.0.1}{2016/06/12}{Added}
+%   The |\tikzExtends| command draws the \Bextends relationship between a (concrete) 
+%   context and an (abstract) context.
+%   \iffalse ^^A BEGIN Produce comments only in the resulting class file
+%<tikz-eventB>
+%<tikz-eventB>% Macro for drawing a EXTENDS relationship between a (concrete) context and an (abstract) context.
+%<tikz-eventB>%
+%<tikz-eventB>% Arguments:
+%<tikz-eventB>% 1. (Optional) The style for drawing, passed as it is
+%<tikz-eventB>%     to the underlying \draw command
+%<tikz-eventB>% 2. The coordinate of the concrete context.
+%<tikz-eventB>% 3. The coordinate of the abstract context.
+%<tikz-eventB>%
+%<tikz-eventB>% USAGE:
+%<tikz-eventB>% \tikzExtends{cnc}{abs} will produce an arrow with the label ``\Brefines'' 
+%<tikz-eventB>% from the node labelled ``cnc'' to the node labelled ``abs''.
+%<tikz-eventB>% The labels must be created as (optional arguments) before using
+%<tikz-eventB>% the \tikzCtx command.
+% \fi^^A END Produce comments only in the resulting class file
+%    \begin{macrocode}
+\newcommand{\tikzExtends}[3][]{
+  \draw[->,#1] (#2) --node[fill=white]{\Bextends} (#3);
+}
+%    \end{macrocode}
+% \end{macro}^^A END \tikzExtends
+%
+% \begin{macro}{\tikzExtendsTranstive}
+%   \changes{v0.0.1}{2016/06/12}{Added}
+%   The |\tikzExtends| command draws the transtive \Bextends relationship between a (concrete) 
+%   context and an (abstract) context
+%   \iffalse ^^A BEGIN Produce comments only in the resulting class file
+%<tikz-eventB>
+%<tikz-eventB>% Macro for drawing a transtive EXTENDS relationship between a (concrete) conctext and an (abstract) context.
+%<tikz-eventB>%
+%<tikz-eventB>% Arguments:
+%<tikz-eventB>% 1. (Optional) The style for drawing, passed as it is
+%<tikz-eventB>%     to the underlying \draw command
+%<tikz-eventB>% 2. The coordinate of the concrete context.
+%<tikz-eventB>% 3. The coordinate of the abstract context.
+%<tikz-eventB>%
+%<tikz-eventB>% USAGE:
+%<tikz-eventB>% \tikzExtendsTrantive{cnc}{abs} will produce an dashed arrow with the label ``\Bextends'' 
+%<tikz-eventB>% from the node labelled ``cnc'' to the node labelled ``abs''.
+%<tikz-eventB>% The labels must be created as (optional arguments) before using
+%<tikz-eventB>% \tikzCtx command.
+% \fi^^A END Produce comments only in the resulting class file
+%    \begin{macrocode}
+\newcommand{\tikzExtendsTransitive}[3][]{
+  \draw[->, dashed,#1] (#2) --node[fill=white]{\Bextends} (#3);
+}
+%    \end{macrocode}
+% \end{macro}^^A END \tikzExtendsTranstive
+%
+%    \begin{macrocode}
+%    \end{macrocode}
+% \Finale
+\endinput

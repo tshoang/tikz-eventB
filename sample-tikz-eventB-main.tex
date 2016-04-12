@@ -1,0 +1,38 @@
+\title{A Sample Event-B Model}
+\author{Thai Son Hoang}
+
+\begin{document}
+
+\maketitle
+
+
+\begin{frame}
+  \begin{center}
+    \begin{Bdiagram}
+      \tikzMch[m0]{0}{0}{M_0}
+      \tikzMch[m1]{0}{-2}{M_1}
+      \tikzMch[mn]{0}{-6}{M_n}
+
+      \tikzCtx[c0]{4}{0}{C_0}
+      \tikzCtx[c1]{4}{-2}{C_1}
+      \tikzCtx[cm]{4}{-6}{C_m}
+
+      \tikzSees{m0}{c0}
+      \tikzSees{m1}{c1}
+      \tikzSees{mn}{cm}
+
+      \tikzRefines{m1}{m0}
+      \tikzRefinesTransitive{mn}{m1}
+
+      \tikzExtends{c1}{c0}
+      \tikzExtendsTransitive{cm}{c1}
+    \end{Bdiagram}
+  \end{center}
+\end{frame}
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "sample-tikz-eventB"
+%%% End:
